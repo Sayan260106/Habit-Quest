@@ -37,14 +37,49 @@ const App: React.FC = () => {
   return (
     <Router>
       <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100">
-        {auth.isAuthenticated && <Navbar user={auth.user} onLogout={logout} />}
+        {auth.isAuthenticated && auth.user && (
+          <Navbar user={auth.user} onLogout={logout} />
+        )}
+
         <main className="flex-grow">
           <Routes>
-            <Route path="/login" element={!auth.isAuthenticated ? <LoginPage onLogin={login} /> : <Navigate to="/" />} />
-            <Route path="/signup" element={!auth.isAuthenticated ? <SignupPage onSignup={login} /> : <Navigate to="/" />} />
-            <Route path="/" element={<ProtectedRoute children={<DashboardPage user={auth.user!} />} />} />
-            <Route path="/analytics" element={<ProtectedRoute children={<AnalyticsPage user={auth.user!} />} />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route
+              path="/login"
+              element={
+                !auth.isAuthenticated
+                  ? <LoginPage onLogin={login} />
+                  : <Navigate to="/" replace />
+              }
+            />
+
+            <Route
+              path="/signup"
+              element={
+                !auth.isAuthenticated
+                  ? <SignupPage onSignup={login} />
+                  : <Navigate to="/" replace />
+              }
+            />
+
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute>
+                  <DashboardPage user={auth.user!} />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/analytics"
+              element={
+                <ProtectedRoute>
+                  <AnalyticsPage user={auth.user!} />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route path="*" element={<Navigate to="/login" replace />} />
           </Routes>
         </main>
       </div>

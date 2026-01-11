@@ -12,8 +12,8 @@ const Navbar: React.FC<NavbarProps> = ({ user, onLogout }) => {
   const location = useLocation();
 
   const navLinks = [
-    { path: '/', label: 'Dashboard', icon: 'fa-terminal' },
-    { path: '/analytics', label: 'Analytics', icon: 'fa-microchip' },
+    { path: '/', label: 'Dashboard', icon: 'fa-rocket' },
+    { path: '/analytics', label: 'Analytics', icon: 'fa-pie-chart' },
   ];
 
   return (
@@ -34,11 +34,10 @@ const Navbar: React.FC<NavbarProps> = ({ user, onLogout }) => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`${
-                    location.pathname === link.path
+                  className={`${location.pathname === link.path
                       ? 'bg-slate-900 text-emerald-400 border-emerald-500/50'
                       : 'text-slate-400 hover:text-slate-100 border-transparent hover:bg-slate-900/50'
-                  } inline-flex items-center px-4 py-2 rounded-xl border text-xs font-black uppercase tracking-widest transition-all duration-200`}
+                    } inline-flex items-center px-4 py-2 rounded-xl border text-xs font-black uppercase tracking-widest transition-all duration-200`}
                 >
                   <i className={`fas ${link.icon} mr-2 text-[10px]`}></i>
                   {link.label}
@@ -49,7 +48,9 @@ const Navbar: React.FC<NavbarProps> = ({ user, onLogout }) => {
           <div className="flex items-center space-x-6">
             <div className="hidden md:flex flex-col items-end">
               <span className="text-xs font-black text-slate-100 uppercase tracking-tight">{user?.fullName}</span>
-              <span className="text-[10px] font-mono text-emerald-500/70 uppercase">Node_{user?.username}</span>
+              <span className="text-[8px] sm:text-[10px] font-mono text-emerald-500/70 uppercase">
+                {user?.username}
+              </span>
             </div>
             <div className="h-8 w-px bg-slate-800 mx-2"></div>
             <button
