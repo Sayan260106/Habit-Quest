@@ -7,6 +7,16 @@ export interface User {
   password?: string;
 }
 
+export interface Achievement {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  unlockedAt?: string;
+  requirement: number;
+  type: 'completions' | 'streaks' | 'level' | 'count';
+}
+
 export interface Habit {
   id: string;
   userId: string;
