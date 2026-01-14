@@ -82,3 +82,16 @@ export interface SmartReminder {
   message: string;
   urgency: 'low' | 'medium' | 'high';
 }
+
+export interface UserStats {
+  level: number;
+  xp: number;
+  streak: number;
+  activeQuests: number;
+}
+
+export interface MotivationState {
+  quote: string;
+  loading: boolean;
+  error: string | null;
+}

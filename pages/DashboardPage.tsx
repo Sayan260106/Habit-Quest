@@ -91,7 +91,7 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ user }) => {
       }
 
       try {
-        const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+        const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY});
         const habitContext = habits.map(h => h.name).join(', ');
         const prompt = `You are a futuristic AI habit coach called 'HabitQuest Core'. Based on these active protocols (habits): ${habitContext}. Provide a short motivational quote (sci-fi themed), a specific focus directive for the day, and a quick tip for improvement.`;
 

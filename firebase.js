@@ -1,16 +1,19 @@
 import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyALeW0IhEOULbKNB13PVbDyXrdVX3KH9kQ",
-  authDomain: "habit-quest-f9a34.firebaseapp.com",
-  projectId: "habit-quest-f9a34",
-  storageBucket: "habit-quest-f9a34.firebasestorage.app",
-  messagingSenderId: "701399130832",
-  appId: "1:701399130832:web:8f3ea74982b6c9c9ca74d5",
-  measurementId: "G-26Y40WGGP4"
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: "habit-quest-as0526.firebaseapp.com",
+  projectId: "habit-quest-as0526",
+  storageBucket: "habit-quest-as0526.firebasestorage.app",
+  messagingSenderId: "130776729034",
+  appId: "1:130776729034:web:2e2b2d9be3abc3d1523b33",
+  measurementId: "G-2MJFGBFNGV"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 export const auth = getAuth(app);
 export const provider = new GoogleAuthProvider();
