@@ -2,6 +2,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { User } from '../types';
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../firebase";
+
+const handleGoogleLogin = async () => {
+  await signInWithPopup(auth, provider);
+};
+
 
 interface LoginPageProps {
   onLogin: (user: User) => void;
@@ -100,6 +107,24 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
               </Link>
             </p>
           </div>
+
+          <div>
+            <div className="mt-5 pt-5 text-center">
+              <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">
+                OR
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-5 pt-5 text-center">
+            <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">
+              Continue with: {' '}
+              <button onClick={handleGoogleLogin} className="text-emerald-400 hover:text-emerald-300 transition-colors underline decoration-emerald-500/30 underline-offset-4">
+                Google
+              </button>
+            </p>
+          </div>
+
         </div>
       </div>
     </div>

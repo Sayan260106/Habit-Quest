@@ -251,7 +251,6 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ user }) => {
                 fill="transparent"
                 className="text-slate-800"
               />
-
               <circle
                 cx="50"
                 cy="50"
@@ -267,7 +266,6 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ user }) => {
                 className="text-emerald-500 transition-all duration-1000 ease-out"
               />
             </svg>
-
             <div className="absolute inset-0 flex flex-col items-center justify-center z-20">
               <span className="text-[8px] sm:text-[10px] font-black text-slate-500 uppercase tracking-widest">LVL</span>
               <span className="text-2xl sm:text-3xl font-black text-white drop-shadow-lg">{currentLevel}</span>
@@ -369,10 +367,10 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ user }) => {
                             disabled={date > todayStr}
                             onClick={(e) => toggleLog(habit.id, date, e)}
                             className={`w-8 h-8 rounded-xl transition-all duration-300 border-2 flex items-center justify-center group/btn relative ${isCompleted(habit.id, date)
-                                ? 'scale-110 border-transparent text-white shadow-xl shadow-emerald-500/10'
-                                : isMissed(habit.id, date)
-                                  ? 'bg-red-500/10 border-red-500/20 text-red-500'
-                                  : 'bg-transparent border-slate-800 hover:border-slate-700'
+                              ? 'scale-110 border-transparent text-white shadow-xl shadow-emerald-500/10'
+                              : isMissed(habit.id, date)
+                                ? 'bg-red-500/10 border-red-500/20 text-red-500'
+                                : 'bg-transparent border-slate-800 hover:border-slate-700'
                               } ${date > todayStr ? 'opacity-10 cursor-not-allowed' : ''}`}
                             style={{
                               backgroundColor: isCompleted(habit.id, date) ? habit.color : undefined
